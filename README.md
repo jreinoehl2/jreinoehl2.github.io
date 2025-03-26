@@ -1,7 +1,7 @@
 # College Basketball Scoreboard
 # CSCE464 Midterm Project
 
-A responsive, modern web application that provides real-time college basketball scores, news, and rankings for both men's and women's NCAA basketball.
+A responsive web application that provides real-time college basketball scores, news, and rankings for both men's and women's NCAA basketball.
 
 ## Features
 
@@ -67,3 +67,4 @@ A responsive, modern web application that provides real-time college basketball 
 - Add search functionality
 - Add favorite teams feature
 - Implement local storage for user preferences
+- Introduce NAIA and lower division teams
