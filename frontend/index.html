@@ -12,10 +12,22 @@
         <li><a href="#" id="back-to-scores" class="active">Scores</a></li>
         <li><a href="#" id="rankings-link">Rankings</a></li>
         <li class="dropdown">
+            <a href="#" class="dropdown-toggle">League</a>
+            <ul class="dropdown-menu">
+                <li><a href="#" id="nba-toggle">NBA</a></li>
+                <li><a href="#" id="wnba-toggle">WNBA</a></li>
+                <li><a href="#" id="mens-college-toggle">Men's College</a></li>
+                <li><a href="#" id="womens-college-toggle">Women's College</a></li>
+                <li><a href="#" id="all-leagues-toggle">All Leagues</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
             <a href="#" class="dropdown-toggle">News</a>
             <ul class="dropdown-menu">
-                <li><a href="#" id="mens-news">Men's News</a></li>
-                <li><a href="#" id="womens-news">Women's News</a></li>
+                <li><a href="#" id="nba-news">NBA News</a></li>
+                <li><a href="#" id="wnba-news">WNBA News</a></li>
+                <li><a href="#" id="mens-news">Men's College News</a></li>
+                <li><a href="#" id="womens-news">Women's College News</a></li>
             </ul>
         </li>
         <li class="dropdown">
@@ -31,10 +43,13 @@
   </nav>
 
     <header>
-        <h1>College Basketball Scores</h1>
+        <h1>Basketball Scores</h1>
         <div class="toggle-container">
-            <button id="mens-btn" class="active">Men's</button>
-            <button id="womens-btn">Women's</button>
+            <button id="all-btn" class="active">All</button>
+            <button id="nba-btn">NBA</button>
+            <button id="wnba-btn">WNBA</button>
+            <button id="mens-btn">Men's College</button>
+            <button id="womens-btn">Women's College</button>
         </div>
     </header>
 
@@ -100,6 +115,8 @@
     <script src="js/scores.js"></script>
     <script src="js/news.js"></script>
     <script src="js/rankings.js"></script>
+    <script src="js/nba.js"></script>
+    <script src="js/wnba.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
