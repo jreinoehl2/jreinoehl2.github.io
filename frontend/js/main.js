@@ -242,6 +242,42 @@ calendar.setOnDateSelected((date) => {
     loadScores();
 });
 
+// Event listeners for header buttons affecting rankings
+document.getElementById('nba-btn').addEventListener('click', () => {
+    currentView = 'nba';
+    if (currentSection === 'rankings') {
+        loadCurrentRankings();
+    }
+});
+
+document.getElementById('wnba-btn').addEventListener('click', () => {
+    currentView = 'wnba';
+    if (currentSection === 'rankings') {
+        loadCurrentRankings();
+    }
+});
+
+document.getElementById('mens-btn').addEventListener('click', () => {
+    currentView = 'mens';
+    if (currentSection === 'rankings') {
+        loadCurrentRankings();
+    }
+});
+
+document.getElementById('womens-btn').addEventListener('click', () => {
+    currentView = 'womens';
+    if (currentSection === 'rankings') {
+        loadCurrentRankings();
+    }
+});
+
+document.getElementById('all-btn').addEventListener('click', () => {
+    currentView = 'all';
+    if (currentSection === 'rankings') {
+        loadCurrentRankings();
+    }
+});
+
 function init() {
     updateDateDisplay();
     loadScores();

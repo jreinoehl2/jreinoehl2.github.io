@@ -803,6 +803,23 @@ h4 {
   cursor: pointer;
 }
 
+/* Add this to your CSS file */
+.conferences-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.conference-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.conference-table {
+    width: 100%;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
@@ -859,5 +876,9 @@ h4 {
 
   .calendar-container {
     width: 95%;
+  }
+
+  .conferences-container {
+    flex-direction: column;
   }
 }

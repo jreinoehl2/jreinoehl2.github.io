@@ -65,13 +65,18 @@ function displayNBARankings(data) {
     titleElement.textContent = 'NBA Standings';
     rankingsContent.appendChild(titleElement);
     
-    if (!data || !data.standings || data.standings.length === 0) {
+    // Check the actual structure of the data
+    if (!data || !data.children || data.children.length === 0) {
         rankingsContent.innerHTML += '<div class="error-message">No NBA standings data available at this time.</div>';
         return;
     }
     
     // Create a table for each conference
-    data.standings.forEach(conference => {
+    data.children.forEach(conference => {
+        if (!conference.standings || !conference.standings.entries) {
+            return;
+        }
+        
         const conferenceTitle = document.createElement('h4');
         conferenceTitle.textContent = conference.name;
         rankingsContent.appendChild(conferenceTitle);
@@ -94,21 +99,28 @@ function displayNBARankings(data) {
         table.appendChild(thead);
         
         const tbody = document.createElement('tbody');
-        conference.entries.forEach(team => {
+        conference.standings.entries.forEach(team => {
             const row = document.createElement('tr');
+            
+            // Get the stats from the API response
+            const wins = team.stats.find(stat => stat.name === "wins")?.value || 0;
+            const losses = team.stats.find(stat => stat.name === "losses")?.value || 0;
+            const winPercent = team.stats.find(stat => stat.name === "winPercent")?.displayValue || ".000";
+            const gamesBehind = team.stats.find(stat => stat.name === "gamesBehind")?.displayValue || "-";
+            const streak = team.stats.find(stat => stat.name === "streak")?.displayValue || "-";
             
             // Fill row with team data
             row.innerHTML = `
-                <td class="rank">${team.position}</td>
+                <td class="rank">${team.stats.find(stat => stat.name === "playoffSeed")?.value || "-"}</td>
                 <td class="team-name">
                     <img class="team-logo" src="${team.team.logos[0].href}" alt="${team.team.displayName} logo">
                     <span>${team.team.displayName}</span>
                 </td>
-                <td class="record">${team.stats.wins}</td>
-                <td class="record">${team.stats.losses}</td>
-                <td class="record">${team.stats.winPercent}</td>
-                <td class="record">${team.stats.gamesBehind || '-'}</td>
-                <td class="record">${team.stats.streak}</td>
+                <td class="record">${wins}</td>
+                <td class="record">${losses}</td>
+                <td class="record">${winPercent}</td>
+                <td class="record">${gamesBehind}</td>
+                <td class="record">${streak}</td>
             `;
             
             tbody.appendChild(row);
