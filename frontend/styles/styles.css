@@ -156,6 +156,7 @@ h1 {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   padding: 15px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .game-card:hover {
@@ -435,38 +436,449 @@ footer {
   margin: 20px 0;
 }
 
+/* Add styles for league badges */
+.league-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-right: 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #2c3e50;
+  color: white;
+}
+
+/* Styles for ranking tabs */
+.rankings-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.tab-btn.active {
+  background-color: #2c3e50;
+  color: white;
+}
+
+/* Style for conference titles */
+h4 {
+  margin: 20px 0 10px;
+  color: #2c3e50;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* Game details popup styling */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.game-details-popup {
+  background-color: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-popup:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Popup header styles */
+.popup-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.teams-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.team.away {
+  justify-content: flex-start;
+}
+
+.team.home {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.team-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin: 0 10px;
+}
+
+.team-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.team-info .record {
+  color: #666;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+}
+
+.score {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.vs {
+  font-size: 16px;
+  color: #666;
+}
+
+.game-info {
+  text-align: center;
+  color: #333;
+}
+
+.status {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.venue, .series {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Tab styling */
+.popup-tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  margin: 15px 0;
+}
+
+.popup-tabs .tab-btn {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.popup-tabs .tab-btn.active {
+  border-bottom-color: #2271b1;
+  color: #2271b1;
+}
+
+.popup-tabs .tab-btn:hover:not(.active) {
+  background-color: #f5f5f5;
+}
+
+.tab-content {
+  display: none;
+  padding: 15px 0;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Tables styling */
+.box-score-table,
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.box-score-table th,
+.stats-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.box-score-table td,
+.stats-table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.box-score-table td:first-child,
+.stats-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+}
+
+/* Team leaders styling */
+.team-leaders {
+  margin-bottom: 20px;
+}
+
+.team-leaders h4 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.team-leaders ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.team-leaders li {
+  padding: 5px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.no-data-message {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+.calendar-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+  transition: transform 0.2s;
+}
+
+.calendar-button:hover {
+  transform: scale(1.1);
+}
+
+.calendar-container {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 15px;
+  margin-top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 320px;
+  width: 90%;
+}
+
+.calendar-container.active {
+  display: block;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.calendar-controls button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 5px 0;
+}
+
+.calendar-day {
+  text-align: center;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.calendar-day:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-day.other-month {
+  color: #aaa;
+}
+
+.calendar-day.selected {
+  background-color: #4285f4;
+  color: white;
+}
+
+.calendar-day.today {
+  border: 2px solid #4285f4;
+}
+
+.calendar-day.has-games {
+  font-weight: bold;
+  color: #4285f4;
+}
+
+.calendar-footer {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.calendar-footer button {
+  padding: 5px 10px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Add this to your CSS file */
+.conferences-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.conference-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.conference-table {
+    width: 100%;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
-      display: none;
+    display: none;
   }
   
   .hamburger-menu {
-      display: block;
+    display: block;
   }
   
   header {
-      flex-direction: column;
-      gap: 15px;
-      align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
   }
   
   .date-selector {
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
   }
   
   .additional-filters {
-      flex-direction: column;
+    flex-direction: column;
   }
   
   .footer-content {
-      flex-direction: column;
+    flex-direction: column;
   }
   
   .footer-bottom {
-      flex-direction: column;
-      gap: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .game-details-popup {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .team-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .score {
+    font-size: 22px;
+  }
+  
+  .popup-tabs {
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .calendar-container {
+    width: 95%;
+  }
+
+  .conferences-container {
+    flex-direction: column;
   }
 }

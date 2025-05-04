@@ -7,10 +7,22 @@ const newsContent = document.getElementById('news-content');
 function loadNews() {
     newsContent.innerHTML = '<div class="loading">Loading news articles...</div>';
     
-    if (currentView === 'mens') {
-        fetchMensNews();
-    } else {
-        fetchWomensNews();
+    switch(currentView) {
+        case 'mens':
+            fetchMensNews();
+            break;
+        case 'womens':
+            fetchWomensNews();
+            break;
+        case 'nba':
+            fetchNBANews();
+            break;
+        case 'wnba':
+            fetchWNBANews();
+            break;
+        default:
+            // Default case, could show a combined view or men's news
+            fetchMensNews();
     }
 }
 

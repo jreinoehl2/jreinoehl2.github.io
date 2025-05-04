@@ -1,5 +1,5 @@
 let currentDate = new Date();
-let currentView = 'mens';
+let currentView = 'all'; // Change default to 'all' from 'mens'
 let currentSection = 'scores';
 
 // Format date for API calls
@@ -40,14 +40,33 @@ function resetNavigation() {
 
 // Set active
 function updateToggleButtons() {
+    const allBtn = document.getElementById('all-btn');
+    const nbaBtn = document.getElementById('nba-btn');
+    const wnbaBtn = document.getElementById('wnba-btn');
     const mensBtn = document.getElementById('mens-btn');
     const womensBtn = document.getElementById('womens-btn');
     
-    if (currentView === 'mens') {
-        mensBtn.classList.add('active');
-        womensBtn.classList.remove('active');
-    } else {
-        womensBtn.classList.add('active');
-        mensBtn.classList.remove('active');
+    // Remove active class from all buttons
+    [allBtn, nbaBtn, wnbaBtn, mensBtn, womensBtn].forEach(btn => {
+        if (btn) btn.classList.remove('active');
+    });
+    
+    // Add active class to current view button
+    switch(currentView) {
+        case 'all':
+            if (allBtn) allBtn.classList.add('active');
+            break;
+        case 'nba':
+            if (nbaBtn) nbaBtn.classList.add('active');
+            break;
+        case 'wnba':
+            if (wnbaBtn) wnbaBtn.classList.add('active');
+            break;
+        case 'mens':
+            if (mensBtn) mensBtn.classList.add('active');
+            break;
+        case 'womens':
+            if (womensBtn) womensBtn.classList.add('active');
+            break;
     }
 }
