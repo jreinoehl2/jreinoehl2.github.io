@@ -6,6 +6,7 @@ const mensBtn = document.getElementById('mens-btn');
 const womensBtn = document.getElementById('womens-btn');
 const prevDayBtn = document.getElementById('prev-day');
 const nextDayBtn = document.getElementById('next-day');
+const calendar = new Calendar();
 
 // News link elements
 const nbaNewsLink = document.getElementById('nba-news');
@@ -228,6 +229,18 @@ function showCombinedRankings() {
     // Load NBA rankings by default
     fetchNBARankings();
 }
+
+// Set up date change callback
+calendar.setOnDateSelected((date) => {
+    // Format date for display
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    document.getElementById('current-date').textContent = formattedDate;
+    
+    // Get scores for the selected date
+    currentDate = date;
+    loadScores();
+});
 
 function init() {
     updateDateDisplay();
