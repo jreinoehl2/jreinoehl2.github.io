@@ -290,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.querySelector('.hamburger-menu');
   const navLinks = document.querySelector('.nav-links');
   const dropdowns = document.querySelectorAll('.dropdown');
+  const navItems = document.querySelectorAll('.nav-links a');
   
   // Toggle mobile menu
   if (hamburger) {
@@ -311,5 +312,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
+  });
+
+  // Close mobile menu when clicking any navigation link
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      if (window.innerWidth <= 768 && !this.classList.contains('dropdown-toggle')) {
+        // Close the mobile menu
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        
+        // Also close any open dropdowns
+        dropdowns.forEach(dropdown => {
+          dropdown.classList.remove('open');
+        });
+      }
+    });
   });
 });
