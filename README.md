@@ -1,31 +1,35 @@
-# College Basketball Scoreboard
-# CSCE464 Midterm Project
+# Basketball Hub
+# CSCE464 Final Project
 
-A responsive web application that provides real-time college basketball scores, news, and rankings for both men's and women's NCAA basketball.
+A responsive web application that provides real-time basketball scores, news, and rankings for NBA, WNBA, and NCAA basketball (men's and women's).
 
 ## Features
 
 ### Scores
-- Real-time scores for men's and women's college basketball games
+- Real-time scores for NBA, WNBA, men's and women's college basketball games
 - Date navigation to view past and upcoming games
+- Calendar widget for easy date selection
 - Game status indicators (live, final, scheduled)
 - Team logos and scores displayed in an easy-to-read format
-- Toggle between men's and women's games
+- Toggle between different leagues
 
 ### News
-- Latest articles for men's and women's college basketball
+- Latest articles for all basketball leagues
 - Article previews with images, headlines, and publication dates
 - Links to full articles
-- Toggle between men's and women's basketball news
+- Filter news by league (NBA, WNBA, Men's College, Women's College)
 
 ### Rankings
-- UI for displaying basketball rankings (API integration in progress)
-- Men's basketball rankings structure implemented
-- Currently using placeholder data as the ranking API is not available
+- Current standings for NBA and WNBA teams
+- Conference-based organization
+- Team records, win percentages, and streak information
+- College basketball rankings structure implemented
+- Visual representation with team logos
 
 ### Statistics
 - UI framework for displaying player and team statistics (coming soon)
-- Placeholder for future implementation
+- This section remains a placeholder as there are no freely available comprehensive statistics APIs
+- Commercial APIs are available but require paid subscriptions
 
 ## Technical Details
 
@@ -36,7 +40,7 @@ A responsive web application that provides real-time college basketball scores, 
 - CSS Grid and Flexbox for layout
 
 ### Data Sources
-- ESPN public APIs for scores and news content
+- ESPN public APIs for scores, news content, and standings
 - Data fetched dynamically using JavaScript fetch API
 - Asynchronous loading of content
 
@@ -45,8 +49,11 @@ A responsive web application that provides real-time college basketball scores, 
   - `main.js`: Main application logic and initialization
   - `scores.js`: Score fetching and display functionality
   - `news.js`: News article fetching and display
-  - `rankings.js`: Rankings display (API integration pending)
+  - `rankings.js`: Rankings display
+  - `nba.js`: NBA-specific functionality
+  - `wnba.js`: WNBA-specific functionality
   - `utils.js`: Shared utility functions
+  - `calendar.js`: Date selection and calendar widget
 
 ## Setup and Usage
 
@@ -54,17 +61,22 @@ A responsive web application that provides real-time college basketball scores, 
 2. Open `index.html` in a web browser
 3. No build process or dependencies required
 
+- Also going to https://jreinoehl2.github.io/ works.
+
 ## Limitations
 
-- Rankings data is currently not available as the API endpoint is not functioning
-- Statistics section is planned but not yet implemented
+- Statistics section is not implemented due to lack of free API access
+  - Comprehensive basketball statistics typically require paid API subscriptions
+  - Services like SportRadar, Stats Perform, and MySportsFeeds offer this data commercially
 - Some features may be limited by the ESPN API's rate limits and data availability
+- Historical data beyond a certain timeframe may not be available through the public APIs
 
 ## Future Improvements
 
-- Add statistics section with player and team stats
-- Implement conference standings
-- Add search functionality
+- Implement basic statistics using available free data points
 - Add favorite teams feature
 - Implement local storage for user preferences
-- Introduce NAIA and lower division teams
+- Enhance mobile experience with touch-optimized controls
+- Add dark mode toggle
+- Implement conference-specific filtering
+- Introduce score alerts for favorite teams
